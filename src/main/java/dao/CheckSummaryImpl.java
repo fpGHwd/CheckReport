@@ -11,6 +11,7 @@ package dao;
 
 import entity.TbCheckSummaryEntity;
 import entity.TbSystemEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
 
@@ -45,6 +46,8 @@ public class CheckSummaryImpl implements CheckSummaryDao {
 
     @Override
     public List<TbCheckSummaryEntity> getCheckSummary() {
-        return null;
+        String sql = "SELECT * FROM tb_check_summary";
+        List<TbCheckSummaryEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckSummaryEntity>(TbCheckSummaryEntity.class));
+        return result;
     }
 }

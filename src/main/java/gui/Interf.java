@@ -7,8 +7,14 @@ package gui; /**
  * @Project: CheckReport
  */
 
+import dao.CheckSummaryDao;
+import dao.CheckSummaryImpl;
+import entity.TbCheckSummaryEntity;
+
 import javax.swing.*;
+import javax.swing.table.TableModel;
 import java.awt.event.*;
+import java.util.List;
 
 public class Interf {
     private JPanel mainPanel;
@@ -48,7 +54,7 @@ public class Interf {
                 // 读取文件并写入数据库100s
                 System.out.println("查看报告被按下");
                 // 更新装置信息
-
+                updateDeviceInfo();
             }
         });
 
@@ -101,7 +107,17 @@ public class Interf {
 
     private void updateDeviceInfo(){
         //1.获取所有的数据
-
+        CheckSummaryDao csd = new CheckSummaryImpl();
+        List<TbCheckSummaryEntity> ltcse = csd.getCheckSummary();
         //2.更新表格
+        TableModel model = devicesInfoTable.getModel();
+        int len = ltcse.size();
+        for(int i = 0; i < len; i++){
+            model.setValueAt(i, i,0); // 序号
+            model.setValueAt(ltcse.get(i).getDeviceName(), i ,1); // 设备名字
+            model.setValueAt(ltcse.get(i).getIsChecked(), i,2); // 是否巡视
+            model.setValueAt(ltcse.get(i).getResult(), i ,3);   // 巡视结果
+            model.setValueAt(ltcse.get(i).getUnCheckReason(), i ,4);   // 未巡视或失败原因
+        }
     }
 }
