@@ -1,0 +1,41 @@
+{
+  "System": ["Substation","CheckTime","CheckReason","DeviceSum","CheckDeviceSum","AbnormalDeviceSum"],
+  "Ied": ["DeviceId","DeviceName","IsChecked","UncheckReason","result"],
+  "Item": ["Zone","Setting","SoftPlate","HardPlate","Discrete","Clock","CommStatus","SecCircuit"],
+  "Result": {
+    "IsChecked":{"0": "未巡视","1": "已巡视"},
+    "UncheckReason":{"0": "不涉及(实际已巡视)","1": "装置不再巡视范围内","2": "装置通信中断","3": "装置正在检修","4": "未下发标准值"},
+    "result": {"0": "未知状态","1": "正常不许检修","2": "异常需关注","3": "严重需检修","4": "无法评价需人工确认"}
+  },
+  "InspectionCategories": {
+    "DiffZone": "定值区巡视情况",
+    "DiffSetting": "定值巡视情况",
+    "DiffSoftPlate": "软压板",
+    "DiffDiscrete": "开入状态量巡视情况",
+    "DiffClock": "时钟巡视情况",
+    "CommonStatus": "通信状态巡视情况",
+    "SecCircuit": "二次回路巡视情况",
+    "SoftVersion": "软件版本巡视情况",
+    "SelfAlarm": "自检告警巡视情况",
+    "GpsAlarm": "GPS告警巡视情况",
+    "Wave": "录波巡视情况",
+    "Loop": "电路、电压回路巡视情况",
+    "DiffAnalog": "其他模拟量巡视情况",
+    "Channel": "光纤通道巡视情况",
+    "Switch": "转换开关巡视情况"
+  },
+  "DiffZone": ["DeviceId","PointName","ValType","RefVal","RealVal","CheckTime","IsDifferent"],
+  "DiffSetting": ["DeviceId","PointId","PointName","ValType","RefVal","RealVal","ZoneNo","CheckTime","IsDifferent"],
+  "DiffHardPlate": ["DeviceId","PointId","PointName","ValType","RefVal","RealVal","CheckTime","IsDifferent"],
+  "DiffSoftPlate": ["DeviceId","PointName","ValType","RefVal","RealVal","CheckTime","IsDifferent"],
+  "DiffDiscrete": ["DeviceId","PointId","PointName","ValType","RefVal","RealVal","CheckTime","IsDifferent"],
+  "DiffClock": ["DeviceId","PointName","ValType","RefVal","RealVal","CheckTime","IsDifferent"],
+  "CommStatus": ["DeviceId","PointName","RealVal","CheckTime","IsDifferent"],
+  "SecCircuit": ["DeviceId","PointId","PointName","RealVal","CheckTime","IsDifferent"],
+  "SoftVersion": ["DeviceId","PointId","PointName","RefVal","RealVal","CheckTime","IsDifferent"],
+  "SelfAlarm": ["DeviceId","PointId","PointName","RealVal","CheckTime","IsDifferent"],
+  "GpsAlarm": ["DeviceId","PointId","PointName","RealVal","CheckTime","IsDifferent"],
+  "Wave": ["DeviceId","RealVal","CheckTime","IsDifferent"],
+  "Loop": ["DeviceId","PointId","PointName","ValType","RealVal","LowerLimit","UpperLimit","CheckTime","IsDifferent"],
+  "Channel": ["DeviceId","PointId","PointName","RealVal","CheckTime","IsDifferent"]
+}

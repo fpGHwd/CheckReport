@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="pgslookandfeel-1.1.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/pgslookandfeel-1.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/seaglass-demo.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/seaglass-demo.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
