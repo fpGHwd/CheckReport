@@ -1,6 +1,5 @@
 <component name="libraryTable">
-  <library name="Hibernate 5.4.2-5.4.2" type="hibernate">
-    <properties version="5.4.2" />
+  <library name="Hibernate 5.4.2-5.4.2">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/classmate-1.3.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/istack-commons-runtime-3.0.7.jar!/" />

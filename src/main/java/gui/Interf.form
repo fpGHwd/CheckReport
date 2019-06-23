@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Interf">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.Interf">
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
@@ -7,23 +7,21 @@
     </constraints>
     <properties>
       <autoscrolls value="false"/>
-      <maximumSize width="600" height="600"/>
-      <minimumSize width="600" height="600"/>
+      <maximumSize width="-1" height="-1"/>
+      <minimumSize width="-1" height="-1"/>
       <preferredSize width="1200" height="800"/>
     </properties>
-    <border type="line" title="Check Report"/>
+    <border type="none" title=""/>
     <children>
-      <grid id="b2aaa" binding="summaryPanel" layout-manager="GridLayoutManager" row-count="1" column-count="13" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="b2aaa" binding="summaryPanel" layout-manager="GridLayoutManager" row-count="1" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="1100" height="30"/>
-          </grid>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="7" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <alignmentY value="0.0"/>
         </properties>
-        <border type="line" title="Summary details"/>
+        <border type="line" title="巡视概要"/>
         <children>
           <component id="54a5a" class="javax.swing.JLabel" binding="factoryName">
             <constraints>
@@ -33,122 +31,62 @@
             </constraints>
             <properties>
               <alignmentX value="0.4"/>
-              <text value="厂站名称："/>
-            </properties>
-          </component>
-          <component id="30282" class="javax.swing.JLabel" binding="factoryNameStr">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="4" height="31"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="开普检测"/>
+              <text value="厂站名称：开普检测"/>
             </properties>
           </component>
           <component id="68757" class="javax.swing.JLabel" binding="checkTime">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="65" height="31"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="巡视时间：2019-05-26T05:00:00"/>
+            </properties>
+          </component>
+          <component id="26854" class="javax.swing.JLabel" binding="checkMethod">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="65" height="31"/>
               </grid>
             </constraints>
             <properties>
-              <text value="巡视时间："/>
-            </properties>
-          </component>
-          <component id="e08d5" class="javax.swing.JLabel" binding="chckTimeStr">
-            <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="4" height="31"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="2019-05-26T05:00:00"/>
-            </properties>
-          </component>
-          <component id="26854" class="javax.swing.JLabel" binding="checkMethod">
-            <constraints>
-              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="65" height="31"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="巡视方式："/>
-            </properties>
-          </component>
-          <component id="1e870" class="javax.swing.JLabel" binding="checkMethodStr">
-            <constraints>
-              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="4" height="31"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="自动巡视"/>
+              <text value="巡视方式：自动巡视"/>
             </properties>
           </component>
           <component id="dd4b5" class="javax.swing.JLabel" binding="pluginInDevNum">
             <constraints>
-              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="78" height="31"/>
               </grid>
             </constraints>
             <properties>
-              <text value="接入装置数："/>
-            </properties>
-          </component>
-          <component id="7484d" class="javax.swing.JLabel" binding="pluginInDevNumStr">
-            <constraints>
-              <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="4" height="31"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="132"/>
+              <text value="接入装置数：132"/>
             </properties>
           </component>
           <component id="48aa4" class="javax.swing.JLabel" binding="checkDevNum">
             <constraints>
-              <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="78" height="31"/>
               </grid>
             </constraints>
             <properties>
-              <text value="巡视装置数："/>
-            </properties>
-          </component>
-          <component id="32d33" class="javax.swing.JLabel" binding="checkDevNumStr">
-            <constraints>
-              <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="4" height="31"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="132"/>
+              <text value="巡视装置数：132"/>
             </properties>
           </component>
           <component id="77dd4" class="javax.swing.JLabel" binding="excepionDevNum">
             <constraints>
-              <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="78" height="31"/>
               </grid>
             </constraints>
             <properties>
-              <text value="异常装置数："/>
-            </properties>
-          </component>
-          <component id="1d3e7" class="javax.swing.JLabel" binding="exceptionDevNumStr">
-            <constraints>
-              <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="4" height="31"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="132"/>
+              <text value="异常装置数：132"/>
             </properties>
           </component>
           <component id="e6c4d" class="javax.swing.JButton" binding="seeReport">
             <constraints>
-              <grid row="0" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
+              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="86" height="31"/>
               </grid>
             </constraints>
@@ -158,26 +96,68 @@
           </component>
         </children>
       </grid>
-      <grid id="ac548" binding="deviceInfoPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="ac548" binding="deviceInfoPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="0" row-span="3" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="1" column="0" row-span="3" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="500" height="650"/>
           </grid>
         </constraints>
         <properties/>
-        <border type="line" title="Device Information"/>
-        <children/>
+        <border type="line" title="设备信息"/>
+        <children>
+          <scrollpane id="78e2b">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="de06a" class="javax.swing.JTable" binding="devicesInfoTable" custom-create="true">
+                <constraints/>
+                <properties>
+                  <gridColor color="-13224906"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <grid id="64df0" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="cedeb" class="javax.swing.JButton" binding="deviceInfoBtn">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="装置信息"/>
+                </properties>
+              </component>
+              <component id="c5bd2" class="javax.swing.JButton" binding="onlyExceptionDevBtn">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="仅显示异常"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
       </grid>
-      <grid id="81f54" binding="checkInfoPanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="81f54" binding="checkInfoPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="524" height="181"/>
           </grid>
         </constraints>
         <properties/>
-        <border type="line" title="Checking Details"/>
+        <border type="line" title="巡视细节"/>
         <children>
           <grid id="314fe" binding="checkedItems" layout-manager="GridLayoutManager" row-count="3" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
@@ -335,17 +315,21 @@
               </component>
             </children>
           </grid>
-          <grid id="33d49" binding="itemDetails" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-            <border type="line" title="Item Details"/>
-            <children/>
-          </grid>
         </children>
       </grid>
+      <scrollpane id="2f31e" binding="itemDetails">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="e45a5" class="javax.swing.JTable" binding="itemDetailsTable" custom-create="true">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
     </children>
   </grid>
 </form>

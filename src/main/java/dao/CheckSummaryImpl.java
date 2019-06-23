@@ -14,12 +14,12 @@ import entity.TbSystemEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
 
+import java.util.List;
+
 public class CheckSummaryImpl implements CheckSummaryDao {
 
 
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
-
-
 
     public void saveCheckSummary(TbCheckSummaryEntity tcse) {
         String sql = "INSERT INTO tb_check_summary VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -41,5 +41,10 @@ public class CheckSummaryImpl implements CheckSummaryDao {
                 ,tcse.getChannelResult(),tcse.getChannelUncheckReason(),tcse.getChannelIsChecked()
                 ,tcse.getSwitchResult(),tcse.getSwitchUncheckReason(),tcse.getSwitchIsChecked()
         );
+    }
+
+    @Override
+    public List<TbCheckSummaryEntity> getCheckSummary() {
+        return null;
     }
 }
