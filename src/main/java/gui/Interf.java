@@ -12,6 +12,7 @@ import dao.CheckSummaryImpl;
 import entity.TbCheckSummaryEntity;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.event.*;
 import java.util.List;
@@ -84,7 +85,8 @@ public class Interf {
 
         String[] metaData = { "", "", "", "", ""};
         Object[][] content = {metaData};
-        String[] head = { "序号", "装置", "是否巡视", "巡视结果", "未巡或失败原因"};
+        Object[] header = { "序号", "装置", "是否巡视", "巡视结果", "未巡或失败原因"};
+        DefaultTableModel defaultTableModel = new DefaultTableModel(header, 0);
         devicesInfoTable = new JTable(content,head);// 创建表格组件
         devicesInfoTable.setRowHeight(25);
 //        devicesInfoTable.isCellEditable();
@@ -109,6 +111,8 @@ public class Interf {
     private final String[] RESULT = {"未知状态","正常不需检修","异常需关注","严重需检修","无法评价需人工确认"};
     private final String[] UNCHECKEDREASON ={"不涉及（实际已巡视）","装置不在巡视范围内","装置通信中断","装置正在检修","未下发标准值"};
     private final String[] ISCHECKED={"未巡视","已巡视"};
+
+    private final String[] tableDevInfoHeader={};
 
     private void updateDeviceInfo(){
         //1.获取所有的数据
