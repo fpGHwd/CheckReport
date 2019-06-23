@@ -52,7 +52,7 @@ public class Interf {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // 读取文件并写入数据库100s
-                System.out.println("查看报告被按下");
+                System.out.println("正在查询数据库");
                 // 更新装置信息
                 updateDeviceInfo();
             }
@@ -105,6 +105,11 @@ public class Interf {
         }
     }
 
+
+    private final String[] RESULT = {"未知状态","正常不需检修","异常需关注","严重需检修","无法评价需人工确认"};
+    private final String[] UNCHECKEDREASON ={"不涉及（实际已巡视）","装置不在巡视范围内","装置通信中断","装置正在检修","未下发标准值"};
+    private final String[] ISCHECKED={"未巡视","已巡视"};
+
     private void updateDeviceInfo(){
         //1.获取所有的数据
         CheckSummaryDao csd = new CheckSummaryImpl();
@@ -113,11 +118,11 @@ public class Interf {
         TableModel model = devicesInfoTable.getModel();
         int len = ltcse.size();
         for(int i = 0; i < len; i++){
-            model.setValueAt(i, i,0); // 序号
+            model.setValueAt(String.valueOf(i+1), i,0); // 序号
             model.setValueAt(ltcse.get(i).getDeviceName(), i ,1); // 设备名字
-            model.setValueAt(ltcse.get(i).getIsChecked(), i,2); // 是否巡视
-            model.setValueAt(ltcse.get(i).getResult(), i ,3);   // 巡视结果
-            model.setValueAt(ltcse.get(i).getUnCheckReason(), i ,4);   // 未巡视或失败原因
+            model.setValueAt(ISCHECKED[ltcse.get(i).getIsChecked()], i,2); // 是否巡视
+            model.setValueAt(RESULT[ltcse.get(i).getResult()], i ,3);   // 巡视结果
+            model.setValueAt(UNCHECKEDREASON[ltcse.get(i).getUnCheckReason()], i ,4);   // 未巡视或失败原因
         }
     }
 }
