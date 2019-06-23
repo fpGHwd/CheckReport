@@ -8,14 +8,35 @@
  */
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import java.awt.*;
 
 public class Interf {
     private JPanel mainPanel;
     private JPanel summaryPanel;
-    private JTable deviceInfoTable;
+    private JPanel deviceInfoPanel;
     private JTable checkDetailsTable;
     private JPanel checkInfoPanel;
-    private JPanel deviceInfoPanel;
+    private JLabel factoryName;
+    private JLabel factoryNameStr;
+    private JLabel checkTime;
+    private JLabel chckTimeStr;
+    private JLabel checkMethod;
+    private JLabel checkMethodStr;
+    private JLabel pluginInDevNum;
+    private JLabel pluginInDevNumStr;
+    private JLabel checkDevNum;
+    private JLabel checkDevNumStr;
+    private JLabel excepionDevNum;
+    private JLabel exceptionDevNumStr;
+    private JButton seeReport;
+    private JPanel checkedItems;
+    private JButton projectInfoBtn;
+    private JButton onlyExceptionBtn;
+    private JPanel selectItems;
+    private JPanel itemDetails;
+
 
     static {
         try {
@@ -33,8 +54,6 @@ public class Interf {
         frame.setVisible(true);
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
 
-    }
+
 }

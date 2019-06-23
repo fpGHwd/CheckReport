@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31011e86-78e4-48e8-af60-5526be80b7e2" name="Default Changelist" comment="" />
+    <list default="true" id="31011e86-78e4-48e8-af60-5526be80b7e2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Interf.form" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Interf.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gui/src/Interf.java" beforeDir="false" afterPath="$PROJECT_DIR$/Gui/src/Interf.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +58,50 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gui/src/Interf.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="22" column="9" selection-start-line="20" selection-start-column="12" selection-end-line="22" selection-end-column="9" />
+            <state relative-caret-position="453">
+              <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-8-jdk/src.zip!/javax/swing/JFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="386" column="16" selection-start-line="386" selection-start-column="16" selection-end-line="386" selection-end-column="16" />
+              <folding>
+                <element signature="e#24496#24497#0" expanded="true" />
+                <element signature="e#24553#24554#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-8-jdk/src.zip!/java/awt/Window.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="906" column="16" selection-start-line="906" selection-start-column="16" selection-end-line="906" selection-end-column="16" />
+              <folding>
+                <element signature="e#31436#31437#0" expanded="true" />
+                <element signature="e#31480#31481#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-8-jdk/src.zip!/javax/swing/JPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="921">
+              <caret line="115" column="11" selection-start-line="115" selection-start-column="11" selection-end-line="115" selection-end-column="11" />
+              <folding>
+                <element signature="e#3040#3041#0" expanded="true" />
+                <element signature="e#3066#3067#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,6 +131,9 @@
       <find>tcdce</find>
       <find>clock</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -137,8 +187,8 @@
         <option value="$PROJECT_DIR$/GUI/src/CheckReport.form" />
         <option value="$PROJECT_DIR$/GUI/src/Gui.form" />
         <option value="$PROJECT_DIR$/GUI/src/Gui.java" />
-        <option value="$PROJECT_DIR$/Gui/src/Interf.form" />
         <option value="$PROJECT_DIR$/Gui/src/Interf.java" />
+        <option value="$PROJECT_DIR$/Gui/src/Interf.form" />
       </list>
     </option>
   </component>
@@ -160,12 +210,13 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="427" />
     <option name="y" value="133" />
     <option name="width" value="1276" />
     <option name="height" value="844" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -178,6 +229,24 @@
               <item name="CheckReport" type="b2602c69:ProjectViewProjectNode" />
               <item name="CheckReport" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="CheckReport" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CheckReport" type="462c0819:PsiDirectoryNode" />
+              <item name="Gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CheckReport" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CheckReport" type="462c0819:PsiDirectoryNode" />
+              <item name="Gui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CheckReport" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CheckReport" type="462c0819:PsiDirectoryNode" />
+              <item name="Gui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Interf" type="e9f4de52:FormNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -189,9 +258,10 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
     <property name="JPA.DatabaseSchemaImportDialog" value="86509fc8-7059-478e-9e7a-f987b21fe25f" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="274" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="356" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="11" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="370" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
@@ -201,7 +271,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="copyright" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -210,11 +280,11 @@
       <recent name="reverse" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/src/main/java/dao" />
       <recent name="$PROJECT_DIR$/src/main/java/entity" />
       <recent name="$PROJECT_DIR$/target/test-classes" />
-      <recent name="$PROJECT_DIR$/src/test/res" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -319,7 +389,7 @@
       <updated>1560819429304</updated>
       <workItem from="1560819433250" duration="38715000" />
       <workItem from="1560904298222" duration="28434000" />
-      <workItem from="1561102157238" duration="35954000" />
+      <workItem from="1561102157238" duration="44864000" />
     </task>
     <servers />
   </component>
@@ -356,12 +426,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103103000" />
+    <option name="totallyTimeSpent" value="112013000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1928" height="1048" extended-state="6" />
+    <frame x="-4" y="0" width="1928" height="1048" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49810368" visible="true" weight="0.12646745" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49810368" weight="0.12646745" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" sideWeight="0.5018963" side_tool="true" weight="0.18890075" />
@@ -372,13 +443,13 @@
       <window_info id="Image Layers" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2527233" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.31699347" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.055676855" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3165939" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Console" order="7" weight="0.13725491" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32897604" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.30895197" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
@@ -386,7 +457,7 @@
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
       <window_info anchor="bottom" id="Flutter Performance" order="15" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="16" weight="0.19281046" />
+      <window_info anchor="bottom" id="Messages" order="16" weight="0.19213974" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.2497332" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" sideWeight="0.49821427" weight="0.2497332" />
@@ -565,16 +636,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/DiffLoopImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/DiffDiscreteImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -752,17 +813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-jdk/src.zip!/javax/swing/JPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="115" column="11" selection-start-line="115" selection-start-column="11" selection-end-line="115" selection-end-column="11" />
-          <folding>
-            <element signature="e#3040#3041#0" expanded="true" />
-            <element signature="e#3066#3067#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-jdk/src.zip!/javax/swing/GroupLayout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -895,17 +945,6 @@
     <entry file="file://$PROJECT_DIR$/GUI/src/CheckReport.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-jdk/src.zip!/javax/swing/JFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="694" column="57" lean-forward="true" selection-start-line="694" selection-start-column="57" selection-end-line="694" selection-end-column="57" />
-          <folding>
-            <element signature="e#24496#24497#0" expanded="true" />
-            <element signature="e#24553#24554#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GUI/src/Gui.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
@@ -944,13 +983,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-jdk/src.zip!/java/awt/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="906" column="16" selection-start-line="906" selection-start-column="16" selection-end-line="906" selection-end-column="16" />
+          <folding>
+            <element signature="e#31436#31437#0" expanded="true" />
+            <element signature="e#31480#31481#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-jdk/src.zip!/javax/swing/JFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="386" column="16" selection-start-line="386" selection-start-column="16" selection-end-line="386" selection-end-column="16" />
+          <folding>
+            <element signature="e#24496#24497#0" expanded="true" />
+            <element signature="e#24553#24554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Gui/Gui.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Gui/src/Interf.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="22" column="9" selection-start-line="20" selection-start-column="12" selection-end-line="22" selection-end-column="9" />
+        <state relative-caret-position="453">
+          <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-jdk/src.zip!/javax/swing/JPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="921">
+          <caret line="115" column="11" selection-start-line="115" selection-start-column="11" selection-end-line="115" selection-end-column="11" />
+          <folding>
+            <element signature="e#3040#3041#0" expanded="true" />
+            <element signature="e#3066#3067#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
