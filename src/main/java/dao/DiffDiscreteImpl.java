@@ -9,10 +9,13 @@
 
 package dao;
 
+import entity.TbCheckDiffCommStatusEntity;
 import entity.TbCheckDiffDiscreteEntity;
-import entity.TbCheckDiffSettingsEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffDiscreteImpl implements DiffDiscreteDao {
 
@@ -30,5 +33,12 @@ public class DiffDiscreteImpl implements DiffDiscreteDao {
                 tcdde.getRealVal(),
                 tcdde.getCheckTime(),
                 tcdde.getIsDifferent());
+    }
+
+    @Override
+    public List<TbCheckDiffDiscreteEntity> getDiffDiscrete(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_discrete WHERE DeviceId = ?";
+        List<TbCheckDiffDiscreteEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffDiscreteEntity>(TbCheckDiffDiscreteEntity.class), deviceId);
+        return result;
     }
 }

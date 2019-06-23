@@ -9,9 +9,13 @@
 
 package dao;
 
+import entity.TbCheckDiffChannelEntity;
 import entity.TbCheckDiffClockEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffClockImpl implements DiffClockDao {
 
@@ -28,5 +32,12 @@ public class DiffClockImpl implements DiffClockDao {
                 tcdce.getRealVal(),
                 tcdce.getCheckTime(),
                 tcdce.getIsDifferent());
+    }
+
+    @Override
+    public List<TbCheckDiffClockEntity> getDiffClock(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_clock WHERE DeviceId = ?";
+        List<TbCheckDiffClockEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffClockEntity>(TbCheckDiffClockEntity.class), deviceId);
+        return result;
     }
 }

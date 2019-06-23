@@ -9,10 +9,12 @@
 
 package dao;
 
-import entity.TbCheckDiffSoftPlateEntity;
 import entity.TbCheckDiffSoftVersionEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffSoftVersionImpl implements DiffSoftVersionDao {
 
@@ -30,5 +32,12 @@ public class DiffSoftVersionImpl implements DiffSoftVersionDao {
                 tcdsve.getCheckTime(),
                 tcdsve.getIsDifferent()
         );
+    }
+
+    @Override
+    public List<TbCheckDiffSoftVersionEntity> getDiffSoftVersion(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_soft_version WHERE DeviceId = ?";
+        List<TbCheckDiffSoftVersionEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffSoftVersionEntity>(TbCheckDiffSoftVersionEntity.class), deviceId);
+        return result;
     }
 }

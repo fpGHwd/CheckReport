@@ -11,8 +11,11 @@ package dao;
 
 import entity.TbCheckDiffAnalogEntity;
 import entity.TbCheckDiffChannelEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffChannelImpl implements DiffChannelDao {
 
@@ -27,5 +30,12 @@ public class DiffChannelImpl implements DiffChannelDao {
                 tcdce.getRealVal(),
                 tcdce.getCheckTime(),
                 tcdce.getIsDifferent());
+    }
+
+    @Override
+    public List<TbCheckDiffChannelEntity> getChannel(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_channel WHERE DeviceId = ?";
+        List<TbCheckDiffChannelEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffChannelEntity>(TbCheckDiffChannelEntity.class), deviceId);
+        return result;
     }
 }

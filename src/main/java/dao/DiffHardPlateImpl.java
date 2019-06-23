@@ -10,10 +10,11 @@
 package dao;
 
 import entity.TbCheckDiffHardPlateEntity;
-import entity.TbCheckDiffSoftPlateEntity;
-import entity.TbCheckDiffZoneEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffHardPlateImpl implements DiffHardPlateDao {
 
@@ -31,5 +32,12 @@ public class DiffHardPlateImpl implements DiffHardPlateDao {
                 tcdhp.getCheckTime(),
                 tcdhp.getIsDifferent()
                 );
+    }
+
+    @Override
+    public List<TbCheckDiffHardPlateEntity> getDiffHardPlate(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_hard_plate WHERE DeviceId = ?";
+        List<TbCheckDiffHardPlateEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffHardPlateEntity>(TbCheckDiffHardPlateEntity.class), deviceId);
+        return result;
     }
 }

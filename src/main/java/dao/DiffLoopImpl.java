@@ -9,10 +9,12 @@
 
 package dao;
 
-import entity.TbCheckDiffAnalogEntity;
 import entity.TbCheckDiffLoopEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffLoopImpl implements DiffLoopDao {
 
@@ -30,6 +32,13 @@ public class DiffLoopImpl implements DiffLoopDao {
                 tcdle.getUpperLimit(),
                 tcdle.getCheckTime(),
                 tcdle.getIsDifferent());
+    }
+
+    @Override
+    public List<TbCheckDiffLoopEntity> getLoop(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_loop WHERE DeviceId = ?";
+        List<TbCheckDiffLoopEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffLoopEntity>(TbCheckDiffLoopEntity.class), deviceId);
+        return result;
     }
 
 }

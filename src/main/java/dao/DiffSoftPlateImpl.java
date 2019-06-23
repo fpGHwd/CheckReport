@@ -10,8 +10,11 @@
 package dao;
 
 import entity.TbCheckDiffSoftPlateEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffSoftPlateImpl implements DiffSoftPlateDao {
 
@@ -29,5 +32,12 @@ public class DiffSoftPlateImpl implements DiffSoftPlateDao {
                 tcdsp.getCheckTime(),
                 tcdsp.getIsDifferent()
                 );
+    }
+
+    @Override
+    public List<TbCheckDiffSoftPlateEntity> getDiffSoftPlate(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_soft_plate WHERE DeviceId = ?";
+        List<TbCheckDiffSoftPlateEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffSoftPlateEntity>(TbCheckDiffSoftPlateEntity.class), deviceId);
+        return result;
     }
 }

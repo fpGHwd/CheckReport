@@ -34,7 +34,7 @@ import java.util.regex.Pattern;
 
 public class XMLAnalyse {
 
-    private static Map<String, Object> map;
+    public static Map<String, Object> map;
     private static List<File> files;
     private static JSONObject jsonObject;
 

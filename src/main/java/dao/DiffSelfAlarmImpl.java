@@ -10,9 +10,11 @@
 package dao;
 
 import entity.TbCheckDiffSelfAlarmEntity;
-import entity.TbCheckDiffSoftPlateEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffSelfAlarmImpl implements DiffSelfAlarmDao {
 
@@ -31,5 +33,12 @@ public class DiffSelfAlarmImpl implements DiffSelfAlarmDao {
                 tcdsae.getCheckTime(),
                 tcdsae.getIsDifferent()
         );
+    }
+
+    @Override
+    public List<TbCheckDiffSelfAlarmEntity> getSelfAlarm(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_self_alarm WHERE DeviceId = ?";
+        List<TbCheckDiffSelfAlarmEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffSelfAlarmEntity>(TbCheckDiffSelfAlarmEntity.class), deviceId);
+        return result;
     }
 }

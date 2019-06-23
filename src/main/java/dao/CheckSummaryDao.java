@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface CheckSummaryDao {
     void saveCheckSummary(TbCheckSummaryEntity tcse);
-
     List<TbCheckSummaryEntity> getCheckSummary();
 }

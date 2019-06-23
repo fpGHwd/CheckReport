@@ -9,9 +9,13 @@
 
 package dao;
 
+import entity.TbCheckDiffClockEntity;
 import entity.TbCheckDiffCommStatusEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffCommStatusImpl implements DiffCommStatusDao {
 
@@ -27,5 +31,12 @@ public class DiffCommStatusImpl implements DiffCommStatusDao {
                 tcdcde.getCheckTime(),
                 tcdcde.getIsDifferent());
 
+    }
+
+    @Override
+    public List<TbCheckDiffCommStatusEntity> getDiffCommStatus(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_comm_status WHERE DeviceId = ?";
+        List<TbCheckDiffCommStatusEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffCommStatusEntity>(TbCheckDiffCommStatusEntity.class), deviceId);
+        return result;
     }
 }

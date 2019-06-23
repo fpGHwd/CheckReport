@@ -11,8 +11,11 @@ package dao;
 
 import entity.TbCheckDiffAnalogEntity;
 import entity.TbCheckSummaryEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffAnalogImpl implements DiffAnalogDao {
 
@@ -31,5 +34,12 @@ public class DiffAnalogImpl implements DiffAnalogDao {
                 tcdae.getCheckTime(),
                 tcdae.getIsDifferent());
 
+    }
+
+    @Override
+    public List<TbCheckDiffAnalogEntity> getAnalog(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_analog WHERE DeviceId = ?";
+        List<TbCheckDiffAnalogEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffAnalogEntity>(TbCheckDiffAnalogEntity.class), deviceId);
+        return result;
     }
 }

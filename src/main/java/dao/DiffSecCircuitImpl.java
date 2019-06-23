@@ -9,10 +9,12 @@
 
 package dao;
 
-import entity.TbCheckDiffCommStatusEntity;
 import entity.TbCheckDiffSecCircuitEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffSecCircuitImpl implements DiffSecCircuitDao {
 
@@ -27,5 +29,12 @@ public class DiffSecCircuitImpl implements DiffSecCircuitDao {
                 tcdsce.getRealVal(),
                 tcdsce.getCheckTime(),
                 tcdsce.getIsDifferent());
+    }
+
+    @Override
+    public List<TbCheckDiffSecCircuitEntity> getDiffSecCircuit(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_sec_circuit WHERE DeviceId = ?";
+        List<TbCheckDiffSecCircuitEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffSecCircuitEntity>(TbCheckDiffSecCircuitEntity.class), deviceId);
+        return result;
     }
 }

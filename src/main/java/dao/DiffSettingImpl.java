@@ -10,8 +10,11 @@
 package dao;
 
 import entity.TbCheckDiffSettingsEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import utils.JDBCUtils;
+
+import java.util.List;
 
 public class DiffSettingImpl implements DiffSettingDao {
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
@@ -30,5 +33,12 @@ public class DiffSettingImpl implements DiffSettingDao {
                 tcbse.getIsDifferent()
         );
 
+    }
+
+    @Override
+    public List<TbCheckDiffSettingsEntity> getDiffSetting(String deviceId) {
+        String sql = "SELECT * FROM tb_check_diff_settings WHERE DeviceId = ?";
+        List<TbCheckDiffSettingsEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffSettingsEntity>(TbCheckDiffSettingsEntity.class), deviceId);
+        return result;
     }
 }
