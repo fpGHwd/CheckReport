@@ -7,5 +7,5 @@ import java.util.List;
 public interface DiffClockDao {
 
     void saveDiffClock(TbCheckDiffClockEntity tcdce);
-    List<TbCheckDiffClockEntity> getDiffClock(String deviceId);
+    List<TbCheckDiffClockEntity> getClock(String deviceId);
 }

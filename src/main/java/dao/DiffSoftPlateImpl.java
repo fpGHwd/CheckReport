@@ -35,7 +35,7 @@ public class DiffSoftPlateImpl implements DiffSoftPlateDao {
     }
 
     @Override
-    public List<TbCheckDiffSoftPlateEntity> getDiffSoftPlate(String deviceId) {
+    public List<TbCheckDiffSoftPlateEntity> getSoftPlate(String deviceId) {
         String sql = "SELECT * FROM tb_check_diff_soft_plate WHERE DeviceId = ?";
         List<TbCheckDiffSoftPlateEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffSoftPlateEntity>(TbCheckDiffSoftPlateEntity.class), deviceId);
         return result;

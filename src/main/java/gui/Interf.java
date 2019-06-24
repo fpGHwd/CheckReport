@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
@@ -80,6 +79,7 @@ public class Interf {
     }
 
     private volatile String deviceIdG;
+
     public Interf() {
         itemLabels.add(channel);
         itemLabels.add(analog);
@@ -116,7 +116,7 @@ public class Interf {
 //                super.mouseClicked(e);
                 int r = devicesInfoTable.getSelectedRow(); // row就是唯一标志
                 int c = devicesInfoTable.getSelectedColumn();
-                System.out.println("row: " + r + "- column: " + c);
+                System.out.println("row: " + r + " - column: " + c);
                 // 刷新详细列表
 //                String deviceName = (String) devicesInfoTable.getValueAt(r, 1);
                 updateCheckItems(r);
@@ -129,8 +129,20 @@ public class Interf {
             l.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println("触发label事件,deviceId =" +deviceIdG );
-                    updateItemDetails(l, deviceIdG);
+                    System.out.println("触发label事件,deviceId =" + deviceIdG);
+                    try {
+                        updateItemDetails(l, deviceIdG);
+                    } catch (ClassNotFoundException ex) {
+                        ex.printStackTrace();
+                    } catch (NoSuchMethodException ex) {
+                        ex.printStackTrace();
+                    } catch (IllegalAccessException ex) {
+                        ex.printStackTrace();
+                    } catch (InstantiationException ex) {
+                        ex.printStackTrace();
+                    } catch (InvocationTargetException ex) {
+                        ex.printStackTrace();
+                    }
                 }
             });
         }
@@ -200,6 +212,7 @@ public class Interf {
     }
 
     TreeSet ts;
+
     private void updateCheckItems(int r) {
         ts = new TreeSet(new ResultComparator());
         TbCheckSummaryEntity tcse = null;
@@ -226,7 +239,6 @@ public class Interf {
                         }
                     }
                 }
-
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -272,53 +284,12 @@ public class Interf {
         return simpleDateFormat.format(d);
     }
 
-    private void updateItemDetails(JLabel label,String deviceId) {
+    private void updateItemDetails(JLabel label, String deviceId) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
         String s = label.getText();
-/*
-        String key = "";
-        Map<String, String> mp = (Map<String, String>) map.get("InspectionCategories");
-        for (Map.Entry<String, String> entry : mp.entrySet()) {
-            if (entry.getValue().equals(s)) {
-                key = entry.getKey();
-            }
-        }
 
-        Class obj,obj1;
-        try {
-            obj = Class.forName("dao.Diff" + captureName(key) + "Impl");
-            obj1 = Class.forName("entity.TbCheckDiff" + captureName(key) + "Entity");
-            List<Object> result;
-            Method[] methods = obj.getDeclaredMethods();
-            Field[] fields = obj1.getDeclaredFields();
-            for(Method m:methods){
-                if(m.getName().startsWith("get")){
-                    try {
-                        result = m.invoke(obj.newInstance(),obj1,deviceId); // list如何处理
-                    } catch (Exception e){
-
-                    }
-                }
-            }
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-*/
-
-
-/*        DefaultTableModel defaultTableModel = new DefaultTableModel(tableDevInfoHeader, 0);
-        int len = ltcse.size();
-        for (int i = 0; i < len; i++) {
-            Object[] row = {String.valueOf(i + 1), ltcse.get(i).getDeviceId(), ISCHECKED[ltcse.get(i).getIsChecked()], RESULT[ltcse.get(i).getResult()], UNCHECKEDREASON[ltcse.get(i).getUnCheckReason()]};
-            defaultTableModel.addRow(row);
-        }
-        devicesInfoTable.setModel(defaultTableModel);*/
-
-
-
-        int column;
         DefaultTableModel defaultTableModel;
         List<String> columnStrs = new ArrayList<String>();
+        columnStrs.add(0, "序号");
 
         String key = "";
         Map<String, String> mp = (Map<String, String>) map.get("InspectionCategories");
@@ -330,382 +301,43 @@ public class Interf {
 
         List<String> columns = (List<String>) map.get(captureName(key));
 
-        if ("其他模拟量巡视".equals(s)) {
+        for(String item:checkItemsString){
+            if (item.equals(s)) {
 
-/*            List<TbCheckDiffAnalogEntity> result = new DiffAnalogImpl().getAnalog(deviceId);
-            for(Field f:TbCheckDiffAnalogEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffAnalogEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(i));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
+                Class obj = Class.forName("entity.TbCheckDiff"+ captureName(key) +"Entity");
+                Class obj1 = Class.forName("dao.Diff"+captureName(key)+"Impl");
+
+                Method m = obj1.getDeclaredMethod("get"+captureName(key),String.class);
+                Object invoke = m.invoke(obj1.newInstance(), deviceId);
+                List<Object> result = (List<Object>)invoke;
+
+                for (Field f : obj.getDeclaredFields()) {
+                    if(!"id".equals(f.getName())){
+                        f.setAccessible(true);
+                        columnStrs.add(f.getName());
+                    }
+                }
+
+                defaultTableModel = new DefaultTableModel(columnStrs.toArray(), 0);
+                for(int i = 0; i< result.size(); i++){
+                    Object[] row = new Object[columns.size()+1];
+                    row[0] =(i+1);
+                    for(int j = 1; j < columnStrs.size(); j++){
+                        for(Field f:obj.getDeclaredFields()){
+                            if (f.getName().equals(columnStrs.get(j))) {
+                                f.setAccessible(true);
+                                try {
+                                    row[j] = f.get(result.get(i));
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         }
                     }
+                    defaultTableModel.addRow(row);
                 }
-                defaultTableModel.addRow(row);
+                itemDetailsTable.setModel(defaultTableModel);
             }
-            itemDetailsTable.setModel(defaultTableModel);*/
-        }else if("光纤通道巡视".equals(s)){
-            List<TbCheckDiffChannelEntity> result = new DiffChannelImpl().getChannel(deviceId);
-            for(Field f:TbCheckDiffChannelEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffChannelEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("时钟巡视".equals(s)){
-            List<TbCheckDiffClockEntity> result = new DiffClockImpl().getDiffClock(deviceId);
-            for(Field f:TbCheckDiffClockEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffClockEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("通信状态巡视".equals(s)){
-            List<TbCheckDiffCommStatusEntity> result = new DiffCommStatusImpl().getDiffCommStatus(deviceId);
-            for(Field f:TbCheckDiffCommStatusEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffCommStatusEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("开入状态量巡视".equals(s)){
-            List<TbCheckDiffDiscreteEntity> result = new DiffDiscreteImpl().getDiffDiscrete(deviceId);
-            for(Field f:TbCheckDiffDiscreteEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffDiscreteEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("GPS告警巡视".equals(s)){
-            List<TbCheckDiffGpsAlarmEntity> result = new DiffGpsAlarmImpl().getGpsAlarm(deviceId);
-            for(Field f:TbCheckDiffGpsAlarmEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffGpsAlarmEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("硬压板巡视".equals(s)){
-            List<TbCheckDiffHardPlateEntity> result = new DiffHardPlateImpl().getDiffHardPlate(deviceId);
-            for(Field f:TbCheckDiffHardPlateEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffHardPlateEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("电流电压回路巡视".equals(s)){
-            List<TbCheckDiffLoopEntity> result = new DiffLoopImpl().getLoop(deviceId);
-            for(Field f:TbCheckDiffLoopEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffLoopEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("二次回路巡视".equals(s)){
-            List<TbCheckDiffSecCircuitEntity> result = new DiffSecCircuitImpl().getDiffSecCircuit(deviceId);
-            for(Field f:TbCheckDiffSecCircuitEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffSecCircuitEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("自检告警巡视".equals(s)){
-            List<TbCheckDiffSelfAlarmEntity> result = new DiffSelfAlarmImpl().getSelfAlarm(deviceId);
-            for(Field f:TbCheckDiffSelfAlarmEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffSelfAlarmEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("定值巡视".equals(s)){
-            List<TbCheckDiffSettingsEntity> result = new DiffSettingImpl().getDiffSetting(deviceId);
-            for(Field f:TbCheckDiffSettingsEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffSettingsEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("软压板巡视".equals(s)){
-            List<TbCheckDiffSoftPlateEntity> result = new DiffSoftPlateImpl().getDiffSoftPlate(deviceId);
-            for(Field f:TbCheckDiffSoftPlateEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffSoftPlateEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("软件版本巡视".equals(s)){
-            List<TbCheckDiffSoftVersionEntity> result = new DiffSoftVersionImpl().getDiffSoftVersion(deviceId);
-            for(Field f:TbCheckDiffSoftVersionEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffSoftVersionEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("录播巡视".equals(s)){
-            List<TbCheckDiffWaveEntity> result = new DiffWaveImpl().getWave(deviceId);
-            for(Field f:TbCheckDiffWaveEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffWaveEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
-        }else if("定值区巡视".equals(s)){
-            List<TbCheckDiffZoneEntity> result = new DiffZoneImpl().getDiffZone(deviceId);
-            for(Field f:TbCheckDiffZoneEntity.class.getDeclaredFields()){
-                f.setAccessible(true);
-                columnStrs.add(f.getName());
-            }
-            defaultTableModel = new DefaultTableModel(columns.toArray(),0);
-            for(int i = 0;i<result.size();i++){
-                Object[] row = new Object[columns.size()+1];
-                row[0] = (i+1);
-                for(int j = 0; j < columns.size(); j++){
-                    for(Field f:TbCheckDiffZoneEntity.class.getDeclaredFields()){
-                        if(f.getName().equals(columns.get(j))){
-                            f.setAccessible(true);
-                            try {
-                                row[j+1]=f.get(result.get(1));
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                defaultTableModel.addRow(row);
-            }
-            itemDetailsTable.setModel(defaultTableModel);
         }
     }
 
@@ -715,6 +347,16 @@ public class Interf {
         char[] cs = name.toCharArray();
         cs[0] -= 32;
         return String.valueOf(cs);
+    }
+
+    public static String reverseCaptureName(String name) {
+        //  name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        //  return name;
+        char[] cs = name.toCharArray();
+        cs[0] += 32;
+        return String.valueOf(cs);
+
+
     }
 
 }

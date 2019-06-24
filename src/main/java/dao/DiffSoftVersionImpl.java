@@ -35,7 +35,7 @@ public class DiffSoftVersionImpl implements DiffSoftVersionDao {
     }
 
     @Override
-    public List<TbCheckDiffSoftVersionEntity> getDiffSoftVersion(String deviceId) {
+    public List<TbCheckDiffSoftVersionEntity> getSoftVersion(String deviceId) {
         String sql = "SELECT * FROM tb_check_diff_soft_version WHERE DeviceId = ?";
         List<TbCheckDiffSoftVersionEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffSoftVersionEntity>(TbCheckDiffSoftVersionEntity.class), deviceId);
         return result;

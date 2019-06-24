@@ -32,7 +32,7 @@ public class DiffSecCircuitImpl implements DiffSecCircuitDao {
     }
 
     @Override
-    public List<TbCheckDiffSecCircuitEntity> getDiffSecCircuit(String deviceId) {
+    public List<TbCheckDiffSecCircuitEntity> getSecCircuit(String deviceId) {
         String sql = "SELECT * FROM tb_check_diff_sec_circuit WHERE DeviceId = ?";
         List<TbCheckDiffSecCircuitEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffSecCircuitEntity>(TbCheckDiffSecCircuitEntity.class), deviceId);
         return result;

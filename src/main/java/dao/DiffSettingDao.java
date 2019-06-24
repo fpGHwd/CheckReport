@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DiffSettingDao {
     void saveDiffSetting(TbCheckDiffSettingsEntity tcdse);
-    List<TbCheckDiffSettingsEntity> getDiffSetting(String deviceId);
+    List<TbCheckDiffSettingsEntity> getSetting(String deviceId);
 }

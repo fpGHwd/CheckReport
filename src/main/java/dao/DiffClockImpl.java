@@ -35,7 +35,7 @@ public class DiffClockImpl implements DiffClockDao {
     }
 
     @Override
-    public List<TbCheckDiffClockEntity> getDiffClock(String deviceId) {
+    public List<TbCheckDiffClockEntity> getClock(String deviceId) {
         String sql = "SELECT * FROM tb_check_diff_clock WHERE DeviceId = ?";
         List<TbCheckDiffClockEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffClockEntity>(TbCheckDiffClockEntity.class), deviceId);
         return result;

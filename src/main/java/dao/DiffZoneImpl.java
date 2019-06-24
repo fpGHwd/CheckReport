@@ -28,7 +28,7 @@ public class DiffZoneImpl implements DiffZoneDao {
     }
 
     @Override
-    public List<TbCheckDiffZoneEntity> getDiffZone(String deviceId) {
+    public List<TbCheckDiffZoneEntity> getZone(String deviceId) {
         String sql = "SELECT * FROM tb_check_diff_zone WHERE DeviceId = ?";
         List<TbCheckDiffZoneEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffZoneEntity>(TbCheckDiffZoneEntity.class), deviceId);
         return result;

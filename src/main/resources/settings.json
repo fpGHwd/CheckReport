@@ -38,7 +38,9 @@
   "GpsAlarm": ["DeviceId","PointId","PointName","RealVal","CheckTime","IsDifferent"],
   "Wave": ["DeviceId","RealVal","CheckTime","IsDifferent"],
   "Loop": ["DeviceId","PointId","PointName","ValType","RealVal","LowerLimit","UpperLimit","CheckTime","IsDifferent"],
+  "Analog": [],
   "Channel": ["DeviceId","PointId","PointName","RealVal","CheckTime","IsDifferent"],
+  "Switch": [],
   "LabelMapData":{
 
   }

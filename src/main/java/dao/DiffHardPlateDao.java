@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface DiffHardPlateDao {
     void saveDiffHardPlate(TbCheckDiffHardPlateEntity tcdhp);
-    List<TbCheckDiffHardPlateEntity> getDiffHardPlate(String deviceId);
+    List<TbCheckDiffHardPlateEntity> getHardPlate(String deviceId);
 }

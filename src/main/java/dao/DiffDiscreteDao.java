@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface DiffDiscreteDao {
     void saveDiffDiscrete(TbCheckDiffDiscreteEntity tcdse);
-    List<TbCheckDiffDiscreteEntity> getDiffDiscrete(String deviceId);
+    List<TbCheckDiffDiscreteEntity> getDiscrete(String deviceId);
 }

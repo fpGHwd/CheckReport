@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DiffSecCircuitDao {
     void saveDiffSecCircuit(TbCheckDiffSecCircuitEntity tcdsce);
-    List<TbCheckDiffSecCircuitEntity> getDiffSecCircuit(String deviceId);
+    List<TbCheckDiffSecCircuitEntity> getSecCircuit(String deviceId);
 }

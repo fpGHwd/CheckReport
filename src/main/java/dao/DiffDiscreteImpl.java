@@ -36,7 +36,7 @@ public class DiffDiscreteImpl implements DiffDiscreteDao {
     }
 
     @Override
-    public List<TbCheckDiffDiscreteEntity> getDiffDiscrete(String deviceId) {
+    public List<TbCheckDiffDiscreteEntity> getDiscrete(String deviceId) {
         String sql = "SELECT * FROM tb_check_diff_discrete WHERE DeviceId = ?";
         List<TbCheckDiffDiscreteEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffDiscreteEntity>(TbCheckDiffDiscreteEntity.class), deviceId);
         return result;

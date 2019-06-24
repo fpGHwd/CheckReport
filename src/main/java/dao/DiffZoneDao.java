@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DiffZoneDao {
     void saveDiffZone(TbCheckDiffZoneEntity tcbze);
-    List<TbCheckDiffZoneEntity> getDiffZone(String deviceId);
+    List<TbCheckDiffZoneEntity> getZone(String deviceId);
 }

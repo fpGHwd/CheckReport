@@ -34,7 +34,7 @@ public class DiffCommStatusImpl implements DiffCommStatusDao {
     }
 
     @Override
-    public List<TbCheckDiffCommStatusEntity> getDiffCommStatus(String deviceId) {
+    public List<TbCheckDiffCommStatusEntity> getCommStatus(String deviceId) {
         String sql = "SELECT * FROM tb_check_diff_comm_status WHERE DeviceId = ?";
         List<TbCheckDiffCommStatusEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffCommStatusEntity>(TbCheckDiffCommStatusEntity.class), deviceId);
         return result;

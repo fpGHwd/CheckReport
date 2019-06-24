@@ -36,7 +36,7 @@ public class DiffSettingImpl implements DiffSettingDao {
     }
 
     @Override
-    public List<TbCheckDiffSettingsEntity> getDiffSetting(String deviceId) {
+    public List<TbCheckDiffSettingsEntity> getSetting(String deviceId) {
         String sql = "SELECT * FROM tb_check_diff_settings WHERE DeviceId = ?";
         List<TbCheckDiffSettingsEntity> result = template.query(sql, new BeanPropertyRowMapper<TbCheckDiffSettingsEntity>(TbCheckDiffSettingsEntity.class), deviceId);
         return result;

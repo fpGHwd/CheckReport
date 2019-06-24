@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DiffSoftPlateDao {
     void saveDiffSoftPlate(TbCheckDiffSoftPlateEntity tcdsp);
-    List<TbCheckDiffSoftPlateEntity> getDiffSoftPlate(String deviceId);
+    List<TbCheckDiffSoftPlateEntity> getSoftPlate(String deviceId);
 }

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DiffCommStatusDao {
     void saveDiffCommStatus(TbCheckDiffCommStatusEntity tcdcde);
-    List<TbCheckDiffCommStatusEntity> getDiffCommStatus(String deviceId);
+    List<TbCheckDiffCommStatusEntity> getCommStatus(String deviceId);
 }
